@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Profile - Eagles Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/player-profile.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../images/photo_2025-07-02_00-20-51.jpg" alt="Eagles Academy Logo" class="logo">
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="football.html" class="nav-link">
+                    <i class="fas fa-futbol"></i>
+                    <span>Football</span>
+                </a>
+                <a href="crossfit.html" class="nav-link">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>CrossFit</span>
+                </a>
+            </div>
+            <div class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading player profile...</p>
+    </div>
+
+    <!-- Error Screen -->
+    <div id="errorScreen" class="error-screen" style="display: none;">
+        <div class="error-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Player Not Found</h2>
+            <p>Sorry, we couldn't find this player.</p>
+            <button onclick="goBack()" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Team
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Background -->
+    <div class="hero-background">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Profile Container -->
+    <div id="profileContainer" class="profile-container" style="display: none;">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <!-- Profile Picture Section (Left) -->
+            <div class="profile-picture-section">
+                <div class="profile-picture-container">
+                    <div class="profile-picture-frame">
+                        <img id="profileImage" src="/placeholder.svg" alt="Player Profile" class="profile-picture loading">
+                        <div class="picture-glow"></div>
+                        <!-- Add loading overlay -->
+                        <div class="picture-loading-overlay" id="pictureLoadingOverlay">
+                            <div class="loading-spinner-small"></div>
+                        </div>
+                    </div>
+                    <div class="picture-decoration">
+                        <div class="decoration-line"></div>
+                        <div class="decoration-circle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Info Section (Right) -->
+            <div class="profile-info-section">
+                <div class="profile-info">
+                    <h1 class="player-name" id="playerName">Loading...</h1>
+                    
+                    <div class="player-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-birthday-cake"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Age</span>
+                                <span class="detail-value" id="playerAge">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-futbol"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Sport</span>
+                                <span class="detail-value">Football</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Position</span>
+                                <span class="detail-value" id="playerPosition">Loading...</span>
+                            </div>
+                        </div>
+
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="detail-content">
+                                <span class="detail-label">Rating</span>
+                                <div class="rating-stars" id="playerRating">
+                                    <!-- Stars will be generated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn secondary" id="shareBtn" onclick="shareProfile()">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <div class="gallery-header">
+                <h2>Player Gallery</h2>
+                <div class="gallery-tabs">
+                    <button class="gallery-tab active" data-tab="all">
+                        <i class="fas fa-th"></i>
+                        All
+                    </button>
+                    <button class="gallery-tab" data-tab="training">
+                        <i class="fas fa-dumbbell"></i>
+                        Training
+                    </button>
+                    <button class="gallery-tab" data-tab="matches">
+                        <i class="fas fa-futbol"></i>
+                        Matches
+                    </button>
+                </div>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modalImage" src="/placeholder.svg" alt="Player Image">
+            <div class="modal-navigation">
+                <button class="modal-nav prev" onclick="previousImage()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="modal-nav next" onclick="nextImage()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/player-profile.js"></script>
+</body>
+</html>

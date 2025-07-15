@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard - Eagles Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/player-dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="../images/photo_2025-07-02_00-20-51.jpg" alt="Eagles Academy Logo" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="football.html" class="nav-link">
+                    <i class="fas fa-futbol"></i>
+                    <span>Football</span>
+                </a>
+                <a href="../index.html">
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading your dashboard...</p>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div id="dashboardContainer" class="dashboard-container" style="display: none;">
+        <!-- Player Header -->
+        <div class="player-header">
+            <div class="player-info">
+                <div class="player-text-info">
+                    <div class="player-details">
+                        <h1 id="playerName">Loading...</h1>
+                        <p id="playerPosition">Player</p>
+                        <span class="player-id" id="playerId">#000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button class="action-btn check-in-btn" onclick="checkIn()">
+                    <i class="fas fa-clock"></i>
+                    <span>Check In</span>
+                </button>
+                <button class="action-btn profile-btn" onclick="viewProfile()">
+                    <i class="fas fa-user"></i>
+                    <span>My Profile</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Payment Status Card -->
+            <div class="dashboard-card payment-card">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-credit-card"></i>
+                        Payment Status
+                    </h3>
+                    <div class="payment-status" id="paymentStatus">
+                        <span class="status-badge pending">Pending</span>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="payment-info">
+                        <div class="payment-item">
+                            <span class="label">Current Month:</span>
+                            <span class="value" id="currentMonth">January 2025</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="label">Amount:</span>
+                            <span class="value">350 EGP</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="label">Due Date:</span>
+                            <span class="value" id="dueDate">31 Jan 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Overview -->
+            <div class="dashboard-card attendance-overview">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-chart-line"></i>
+                        This Month
+                    </h3>
+                </div>
+                <div class="card-content">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" id="totalSessions">0</div>
+                            <div class="stat-label">Total Sessions</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="attendedSessions">0</div>
+                            <div class="stat-label">Attended</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="missedSessions">0</div>
+                            <div class="stat-label">Missed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="attendanceRate">0%</div>
+                            <div class="stat-label">Attendance Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Calendar -->
+            <div class="dashboard-card calendar-card">
+                <div class="card-header">
+                    <h3>
+                        <i class="fas fa-calendar-alt"></i>
+                        Attendance Calendar
+                    </h3>
+                    <div class="calendar-controls">
+                        <button class="calendar-nav" onclick="previousMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="calendarMonth">January 2025</span>
+                        <button class="calendar-nav" onclick="nextMonth()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <div class="legend-color training-day"></div>
+                            <span>Training Day</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color attended"></div>
+                            <span>Attended</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color missed"></div>
+                            <span>Missed</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color today"></div>
+                            <span>Today</span>
+                        </div>
+                    </div>
+                    <div class="calendar" id="attendanceCalendar">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Check-in Modal -->
+    <div class="modal" id="checkinModal">
+        <div class="modal-overlay" onclick="closeModal('checkinModal')"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Check In</h3>
+                <button class="modal-close" onclick="closeModal('checkinModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="checkin-info">
+                    <div class="checkin-time">
+                        <i class="fas fa-clock"></i>
+                        <span id="currentTime">00:00</span>
+                    </div>
+                    <div class="checkin-date">
+                        <i class="fas fa-calendar"></i>
+                        <span id="currentDate">Today</span>
+                    </div>
+                </div>
+                <div class="checkin-actions">
+                    <button class="btn btn-primary" onclick="confirmCheckIn()">
+                        <i class="fas fa-check"></i>
+                        Confirm Check In
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeModal('checkinModal')">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <script src="../js/player-dashboard.js"></script>
+</body>
+</html>
+
+

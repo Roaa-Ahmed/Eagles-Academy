@@ -1,0 +1,201 @@
+/* Basketball Page - FIFA Card Animation - SIMPLE VERSION */
+
+/* Basketball Hero Section */
+.basketball-hero {
+  height: 70vh;
+  background: linear-gradient(-45deg, #dc2626, #ef4444, #f97316, #ea580c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Players Showcase */
+.players-showcase {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fef2f2 100%);
+}
+
+.showcase-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.showcase-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Players Grid */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* الكارت الأساسي - نفس الـ test page بالضبط */
+.player-card {
+  width: 100%;
+  max-width: 320px;
+  height: 420px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+
+  /* الحالة الأولى - مخفي */
+  opacity: 0;
+  transform: translateY(100px) rotateX(-30deg);
+  transition: all 1s ease;
+}
+
+/* لما نضيف الكلاس ده الكارت يظهر */
+.player-card.show {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+}
+
+/* صورة اللاعب */
+.player-image {
+  width: 100%;
+  height: 280px;
+  background: #ddd;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  object-fit: cover;
+
+  /* الصورة مخفية في الأول */
+  opacity: 0;
+  transform: translateY(-100px) rotateX(-90deg);
+  transition: all 1s ease;
+}
+
+/* لما الكارت يظهر، الصورة تنزل */
+.player-card.show .player-image {
+  opacity: 1;
+  transform: translateY(0) rotateX(0deg);
+  transition-delay: 0.3s;
+}
+
+/* معلومات اللاعب */
+.player-info {
+  text-align: center;
+}
+
+/* اسم اللاعب */
+.player-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #dc2626; /* أحمر للباسكت */
+
+  /* مخفي في الأول */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* لما الكارت يظهر، الاسم يظهر */
+.player-card.show .player-name {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.8s;
+}
+
+/* مركز اللاعب */
+.player-position {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  /* مخفي في الأول */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+/* لما الكارت يظهر، المركز يظهر */
+.player-card.show .player-position {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1s;
+}
+
+/* النجوم */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.star {
+  font-size: 1.4rem;
+  color: #ddd; /* رمادي فاضي */
+
+  /* مخفية في الأول */
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+/* النجمة المملوءة */
+.star.filled {
+  color: #dc2626; /* أحمر للباسكت */
+}
+
+/* لما الكارت يظهر، النجوم تظهر واحدة واحدة */
+.player-card.show .star:nth-child(1) {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.2s;
+}
+.player-card.show .star:nth-child(2) {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.3s;
+}
+.player-card.show .star:nth-child(3) {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.4s;
+}
+.player-card.show .star:nth-child(4) {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.5s;
+}
+.player-card.show .star:nth-child(5) {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 1.6s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .players-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .player-card {
+    height: 380px;
+  }
+
+  .player-image {
+    height: 240px;
+  }
+}
