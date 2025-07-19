@@ -10,7 +10,7 @@ const playersDatabase = {
       "2025-08": {
         // Training days: Sunday=0, Tuesday=2, Thursday=4
         // أغسطس 2025 - أيام التدريب فقط
-        "2025-08-03": "attended", // Sunday
+        "2025-08-03": "pending", // Sunday
         "2025-08-05": "missed", // Tuesday
         "2025-08-07": "attended", // Thursday
         "2025-08-10": "attended", // Sunday
@@ -98,6 +98,36 @@ const currentDate = new Date()
 // نبدأ من أغسطس 2025
 const currentMonth = new Date(2025, 7) // August = 7 (0-indexed)
 
+// ✅ NEW: Load updated data from admin dashboard
+function loadUpdatedPlayerData() {
+  const savedData = localStorage.getItem("eaglesPlayersData")
+  if (savedData) {
+    try {
+      const parsedData = JSON.parse(savedData)
+      console.log("📥 Loading data from admin dashboard:", parsedData)
+      
+      // Update current player data with admin changes
+      Object.keys(parsedData).forEach((playerId) => {
+        const playerIdNum = Number.parseInt(playerId)
+        if (playersDatabase[playerIdNum]) {
+          // Merge admin data with existing player data
+          playersDatabase[playerIdNum] = { 
+            ...playersDatabase[playerIdNum], 
+            ...parsedData[playerId] 
+          }
+          console.log(`✅ Updated player ${playerIdNum} data from admin`)
+        }
+      })
+      
+      return true
+    } catch (error) {
+      console.error("❌ Error loading admin data:", error)
+      return false
+    }
+  }
+  return false
+}
+
 // Get player ID from URL
 function getPlayerIdFromURL() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -112,6 +142,12 @@ function initDashboard() {
   showLoadingScreen()
 
   setTimeout(() => {
+    // ✅ NEW: Load any updates from admin dashboard first
+    const dataLoaded = loadUpdatedPlayerData()
+    if (dataLoaded) {
+      console.log("🔄 Admin data loaded successfully")
+    }
+
     const playerId = getPlayerIdFromURL()
     console.log("Looking for player with ID:", playerId)
 
@@ -145,6 +181,13 @@ function initDashboard() {
 // Load player dashboard
 function loadPlayerDashboard() {
   console.log("Loading dashboard for:", currentPlayer.name)
+  
+  // ✅ NEW: Refresh data from admin dashboard before loading
+  loadUpdatedPlayerData()
+  if (currentPlayer && currentPlayer.id) {
+    currentPlayer = playersDatabase[currentPlayer.id]
+  }
+  
   updatePlayerHeader()
   updatePaymentStatus()
   updateAttendanceOverview()
@@ -483,8 +526,64 @@ function startRealTimeClock() {
   }, 1000)
 }
 
+// ✅ NEW: Auto-refresh data every 30 seconds to sync with admin changes
+setInterval(() => {
+  if (currentPlayer) {
+    const oldPaymentStatus = currentPlayer.paymentStatus
+    const oldAttendance = JSON.stringify(currentPlayer.attendance)
+    
+    // Load fresh data from admin
+    const dataUpdated = loadUpdatedPlayerData()
+    
+    if (dataUpdated && playersDatabase[currentPlayer.id]) {
+      const newPlayer = playersDatabase[currentPlayer.id]
+      const newPaymentStatus = newPlayer.paymentStatus
+      const newAttendance = JSON.stringify(newPlayer.attendance)
+      
+      // Check if data changed
+      if (oldPaymentStatus !== newPaymentStatus || oldAttendance !== newAttendance) {
+        currentPlayer = newPlayer
+        
+        // Refresh the dashboard
+        updatePaymentStatus()
+        updateAttendanceOverview()
+        generateCalendar()
+        
+        console.log("🔄 Dashboard refreshed with new admin data")
+        showNotification("Dashboard updated with latest data", "info")
+      }
+    }
+  }
+}, 30000) // Check every 30 seconds
+
+// ✅ NEW: Also refresh when page becomes visible (when user switches back to tab)
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && currentPlayer) {
+    console.log("👁️ Page became visible, checking for updates...")
+    
+    const oldPaymentStatus = currentPlayer.paymentStatus
+    const oldAttendance = JSON.stringify(currentPlayer.attendance)
+    
+    const dataUpdated = loadUpdatedPlayerData()
+    
+    if (dataUpdated && playersDatabase[currentPlayer.id]) {
+      const newPlayer = playersDatabase[currentPlayer.id]
+      const newPaymentStatus = newPlayer.paymentStatus
+      const newAttendance = JSON.stringify(newPlayer.attendance)
+      
+      if (oldPaymentStatus !== newPaymentStatus || oldAttendance !== newAttendance) {
+        currentPlayer = newPlayer
+        
+        updatePaymentStatus()
+        updateAttendanceOverview()
+        generateCalendar()
+        
+        console.log("🔄 Dashboard refreshed on tab focus")
+        showNotification("Dashboard updated!", "success")
+      }
+    }
+  }
+})
+
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", initDashboard)
-
-
-
