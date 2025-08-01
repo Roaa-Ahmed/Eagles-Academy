@@ -5,7 +5,7 @@ const playersData = [
     name: "Yassin Ahmed",
     position: "Forward",
     type: "players", // field players
-    image: "../images/yassin.jpg",
+    image: "../images/yassin ahmed.jpg",
     rating: 0,
   },
   {
@@ -58,10 +58,10 @@ const playersData = [
   },
   {
     id: 8,
-    name: "Ali Samara",
+    name: "Fathy Samara",
     position: "Forward",
     type: "players", // field players - كان Players بحرف كبير
-    image: "../images/ali samara.jpg",
+    image: "../images/fathy samara.jpg",
     rating: 0,
   },
   {
@@ -120,9 +120,66 @@ const playersData = [
     image: "../images/yehia.jpg",
     rating: 0,
   },
-  // الحراس - صححت النوع
   {
     id: 16,
+    name: "Yassin",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Yassin.jpg",
+    rating: 0,
+  },
+  {
+    id: 17,
+    name: "Ahmed Mohamed",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Ahmed Mohamed.jpg",
+    rating: 0,
+  },
+  {
+    id: 18,
+    name: "Malek Mohamed",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Malek mohamed.jpg",
+    rating: 0,
+  },
+  {
+    id: 19,
+    name: "Ali",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Ali.jpg",
+    rating: 0,
+  },
+  {
+    id: 20,
+    name: "Omar",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Omar.jpg",
+    rating: 0,
+  },
+  {
+    id: 21,
+    name: "Seif",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Seif.jpg",
+    rating: 0,
+  },
+  {
+    id: 22,
+    name: "Youssef",
+    position: "Forward",
+    type: "players", // field players - كان Players ��حرف كبير
+    image: "../images/Youssef.jpg",
+    rating: 0,
+  },
+ 
+  // الحراس - صححت النوع
+  {
+    id: 23,
     name: "Youssef Salem",
     position: "Goalkeeper",
     type: "goalkeepers", // كان Goalkeeper
@@ -130,7 +187,7 @@ const playersData = [
     rating: 0,
   },
   {
-    id: 17,
+    id: 24,
     name: "Ahmed Hany",
     position: "Goalkeeper",
     type: "goalkeepers", // كان Goalkeeper
@@ -138,11 +195,19 @@ const playersData = [
     rating: 0,
   },
   {
-    id: 18,
+    id: 25,
     name: "Seif Saad",
     position: "Goalkeeper",
     type: "goalkeepers", // كان Goalkeeper
-    image: "../images/saif saad.jpg",
+    image: "../images/seif saad.jpg",
+    rating: 0,
+  },
+   {
+    id: 26,
+    name: "Seif Elbaz",
+    position: "Goalkeeper",
+    type: "goalkeepers", // كان Goalkeeper
+    image: "../images/Seif elbaz.jpg",
     rating: 0,
   },
 ]

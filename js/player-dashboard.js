@@ -35,7 +35,7 @@ const playersDatabase = {
   },
   2: {
     id: 2,
-    name: "Mohamed Ali",
+    name: "Mohamed Abdelmoaty",
     position: "Midfielder",
     paymentStatus: "pending",
     paymentDate: null,
@@ -64,6 +64,438 @@ const playersDatabase = {
   },
   // نضيف لاعبين أكتر للتجربة
   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
+    id: 3,
+    name: "Ahmed Hassan",
+    position: "Defender",
+    paymentStatus: "overdue",
+    paymentDate: null,
+    attendance: {
+      "2025-08": {
+        "2025-08-03": "attended", // Sunday
+        "2025-08-05": "missed", // Tuesday
+        "2025-08-07": "missed", // Thursday
+        "2025-08-10": "missed", // Sunday
+        "2025-08-12": "attended", // Tuesday
+        "2025-08-14": "attended", // Thursday
+        "2025-08-17": "missed", // Sunday
+        "2025-08-19": "attended", // Tuesday
+        "2025-08-21": "attended", // Thursday
+        "2025-08-24": "attended", // Sunday
+        "2025-08-26": "missed", // Tuesday
+        "2025-08-28": "pending", // Thursday
+        "2025-08-31": "pending", // Sunday
+      },
+    },
+  },
+   3: {
     id: 3,
     name: "Ahmed Hassan",
     position: "Defender",

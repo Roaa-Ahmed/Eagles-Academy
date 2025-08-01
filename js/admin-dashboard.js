@@ -12,7 +12,7 @@ const playersDatabase = {
   },
   2: {
     id: 2,
-    name: "Mohamed Ali",
+    name: "Mohamed Abdelmoaty",
     position: "Midfielder",
     paymentStatus: "pending",
     paymentDate: null,
@@ -22,7 +22,7 @@ const playersDatabase = {
   },
   3: {
     id: 3,
-    name: "Ahmed Hassan",
+    name: "Abdelrahman Elbeshnawy",
     position: "Defender",
     paymentStatus: "pending",
     paymentDate: null,
@@ -32,8 +32,8 @@ const playersDatabase = {
   },
   4: {
     id: 4,
-    name: "Omar Khaled",
-    position: "Goalkeeper",
+    name: "Abdelrahman Essam",
+    position: "Defender",
     paymentStatus: "pending",
     paymentDate: null,
     attendance: {
@@ -42,7 +42,7 @@ const playersDatabase = {
   },
   5: {
     id: 5,
-    name: "Karim Mostafa",
+    name: "Adam Ahmed",
     position: "Midfielder",
     paymentStatus: "pending",
     paymentDate: null,
@@ -52,7 +52,7 @@ const playersDatabase = {
   },
   6: {
     id: 6,
-    name: "Mahmoud Saeed",
+    name: "Adam",
     position: "Defender",
     paymentStatus: "pending",
     paymentDate: null,
@@ -60,6 +60,207 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
+   7: {
+    id: 7,
+    name: "Ahmed",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   8: {
+    id: 8,
+    name: "Fathy Samara",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   9: {
+    id: 9,
+    name: "Hamza",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   10: {
+    id: 10,
+    name: "Haron",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   11: {
+    id: 11,
+    name: "Mahmoud Khela",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   12: {
+    id: 12,
+    name: "Mohamed Khela",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   13: {
+    id: 13,
+    name: "Osama",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   14: {
+    id: 14,
+    name: "Mohamed Wael",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   15: {
+    id: 15,
+    name: "Yehia",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+   16: {
+    id: 16,
+    name: "Yassin",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  17: {
+    id: 17,
+    name: "Ahmed Mohamed",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  18: {
+    id: 18,
+    name: "Malek Mohamed",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  19: {
+    id: 19,
+    name: "Ali",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  20: {
+    id: 20,
+    name: "Omar",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  21: {
+    id: 21,
+    name: "Seif",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  22: {
+    id: 22,
+    name: "Youssef",
+    position: "Defender",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  23: {
+    id: 23,
+    name: "Youssef Salem",
+    position: "Goalkeeper",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  24: {
+    id: 24,
+    name: "Ahmed Hany",
+    position: "Goalkeeper",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  25: {
+    id: 25,
+    name: "Seif Saad",
+    position: "Goalkeeper",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+  26: {
+    id: 26,
+    name: "Seif Elbaz",
+    position: "Goalkeeper",
+    paymentStatus: "pending",
+    paymentDate: null,
+    attendance: {
+      "2025-01": {},
+    },
+  },
+
 }
 
 // Training schedule

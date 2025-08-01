@@ -7,7 +7,7 @@ const allPlayersData = {
     position: "CDM",
     sport: "Football",
     rating: 0,
-    image: "../images/yassin.jpg",
+    image: "../images/yassin ahmed.jpg",
     gallery: [
       { src: "images/yassin-1.jpg", category: "training", alt: "Training Session 1" },
       { src: "images/yassin-2.jpg", category: "matches", alt: "Match Action 1" },
@@ -196,9 +196,101 @@ const allPlayersData = {
       { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
     ],
   },
-  // الحراس
-  16: {
+   16: {
     id: 16,
+    name: "Yassin",
+    age: 9,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Yassin.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   17: {
+    id: 17,
+    name: "Ahmed Mohamed",
+    age:5,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Ahmed mohamed.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   18: {
+    id: 18,
+    name: "Malek Mohamed",
+    age: 6,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Malek mohamed.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   19: {
+    id: 19,
+    name: "Ali",
+    age: 25,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Ali.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   20: {
+    id: 20,
+    name: "Omar",
+    age: 25,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/omar.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   21: {
+    id: 21,
+    name: "Seif",
+    age: 25,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Seif.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   22: {
+    id: 22,
+    name: "Youssef",
+    age: 25,
+    position: "Forward",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Youssef.jpg",
+    gallery: [
+      { src: "images/training-12.jpg", category: "training", alt: "Training Session 1" },
+      { src: "images/match-12.jpg", category: "matches", alt: "Match Action 1" },
+    ],
+  },
+   
+  // الحراس
+  23: {
+    id: 23,
     name: "Youssef Salem",
     age: 24,
     position: "Goalkeeper",
@@ -210,8 +302,8 @@ const allPlayersData = {
       { src: "images/goalkeeper-2.jpg", category: "matches", alt: "Match Save 1" },
     ],
   },
-  17: {
-    id: 17,
+  24: {
+    id: 24,
     name: "Ahmed Hany",
     age: 23,
     position: "Goalkeeper",
@@ -223,17 +315,30 @@ const allPlayersData = {
       { src: "images/goalkeeper-4.jpg", category: "matches", alt: "Match Save 2" },
     ],
   },
-  18: {
-    id: 18,
+  25: {
+    id: 25,
     name: "Seif Saad",
     age: 22,
     position: "Goalkeeper",
     sport: "Football",
     rating: 0,
-    image: "../images/saif saad.jpg",
+    image: "../images/seif saad.jpg",
     gallery: [
       { src: "images/goalkeeper-5.jpg", category: "training", alt: "Goalkeeper Training 3" },
       { src: "images/goalkeeper-6.jpg", category: "matches", alt: "Match Save 3" },
+    ],
+  },
+  26: {
+    id: 26,
+    name: "Seif Elbaz",
+    age: 24,
+    position: "Goalkeeper",
+    sport: "Football",
+    rating: 0,
+    image: "../images/Seif elbaz.jpg",
+    gallery: [
+      { src: "images/goalkeeper-1.jpg", category: "training", alt: "Goalkeeper Training 1" },
+      { src: "images/goalkeeper-2.jpg", category: "matches", alt: "Match Save 1" },
     ],
   },
 }
