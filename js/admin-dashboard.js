@@ -1,13 +1,13 @@
-// Enhanced players database - الأدمن مش موجود هنا
+// Enhanced players database - قاعدة بيانات اللاعبين
 const playersDatabase = {
   1: {
     id: 1,
     name: "Yassin Ahmed",
     position: "Forward",
-    paymentStatus: "pending", // سيتم تحديثها من الأدمن
+    paymentStatus: "pending",
     paymentDate: null,
     attendance: {
-      "2025-01": {}, // فارغ - سيتم ملؤه من الأدمن
+      "2025-01": {},
     },
   },
   2: {
@@ -60,7 +60,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   7: {
+  7: {
     id: 7,
     name: "Ahmed",
     position: "Defender",
@@ -70,7 +70,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   8: {
+  8: {
     id: 8,
     name: "Fathy Samara",
     position: "Defender",
@@ -80,7 +80,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   9: {
+  9: {
     id: 9,
     name: "Hamza",
     position: "Defender",
@@ -90,7 +90,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   10: {
+  10: {
     id: 10,
     name: "Haron",
     position: "Defender",
@@ -100,7 +100,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   11: {
+  11: {
     id: 11,
     name: "Mahmoud Khela",
     position: "Defender",
@@ -110,7 +110,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   12: {
+  12: {
     id: 12,
     name: "Mohamed Khela",
     position: "Defender",
@@ -120,7 +120,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   13: {
+  13: {
     id: 13,
     name: "Osama",
     position: "Defender",
@@ -130,7 +130,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   14: {
+  14: {
     id: 14,
     name: "Mohamed Wael",
     position: "Defender",
@@ -140,7 +140,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   15: {
+  15: {
     id: 15,
     name: "Yehia",
     position: "Defender",
@@ -150,7 +150,7 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-   16: {
+  16: {
     id: 16,
     name: "Yassin",
     position: "Defender",
@@ -260,14 +260,13 @@ const playersDatabase = {
       "2025-01": {},
     },
   },
-
 }
 
 // Training schedule
-const trainingDays = [0, 2, 4] // Sunday=0, Tuesday=2, Thursday=4
+const trainingDays = [1, 3, 6] // Monday=1, Wednesday=3, Saturday=6
 
 // Admin credentials
-const ADMIN_ID = "99" // ID عادي من 1-100
+const ADMIN_ID = "99"
 
 // Current state
 const currentDate = new Date()
@@ -307,6 +306,9 @@ function loadAdminDashboard() {
 
   // Set today's date as default
   document.getElementById("attendanceDate").value = selectedDate
+
+  // تحميل البيانات المحفوظة أولاً
+  loadPlayersData()
 
   // Load players and update stats
   loadPlayersGrid()
@@ -389,7 +391,7 @@ function createPlayerCard(player) {
   return card
 }
 
-// Mark attendance for a player
+// Mark attendance for a player - الدالة الأساسية لتسجيل الحضور
 function markAttendance(playerId, status) {
   const player = playersDatabase[playerId]
   if (!player) return
@@ -401,8 +403,10 @@ function markAttendance(playerId, status) {
     player.attendance[currentMonthKey] = {}
   }
 
-  // Update attendance
+  // Update attendance - تحديث الحضور
   player.attendance[currentMonthKey][selectedDate] = status
+
+  console.log(`📝 Updated attendance for player ${playerId}: ${status} on ${selectedDate}`)
 
   // Update UI
   const playerCard = document.getElementById(`player-${playerId}`)
@@ -428,11 +432,11 @@ function markAttendance(playerId, status) {
   const statusText = status === "attended" ? "Present" : "Absent"
   showNotification(`${player.name} marked as ${statusText}`, "success")
 
-  // Save to localStorage for persistence
-  savePlayersData()
+  // حفظ البيانات فوراً في localStorage
+  savePlayersDataImmediate()
 }
 
-// Toggle payment status
+// Toggle payment status - تبديل حالة الدفع
 function togglePayment(playerId) {
   const player = playersDatabase[playerId]
   if (!player) return
@@ -445,6 +449,8 @@ function togglePayment(playerId) {
     player.paymentStatus = "paid"
     player.paymentDate = formatDate(new Date())
   }
+
+  console.log(`💰 Updated payment for player ${playerId}: ${player.paymentStatus}`)
 
   // Update UI
   const playerCard = document.getElementById(`player-${playerId}`)
@@ -476,8 +482,8 @@ function togglePayment(playerId) {
   const statusText = player.paymentStatus === "paid" ? "Paid" : "Pending"
   showNotification(`${player.name} payment marked as ${statusText}`, "success")
 
-  // Save to localStorage for persistence
-  savePlayersData()
+  // حفظ البيانات فوراً في localStorage
+  savePlayersDataImmediate()
 }
 
 // Mark all players present
@@ -661,22 +667,54 @@ function getPaymentStatusText(status) {
   return statusMap[status] || status
 }
 
-// Save players data to localStorage
-function savePlayersData() {
-  localStorage.setItem("eaglesPlayersData", JSON.stringify(playersDatabase))
+// حفظ فوري للبيانات في localStorage
+function savePlayersDataImmediate() {
+  try {
+    const dataToSave = JSON.stringify(playersDatabase)
+    localStorage.setItem("eaglesPlayersData", dataToSave)
+
+    // تأكيد الحفظ
+    const savedData = localStorage.getItem("eaglesPlayersData")
+    if (savedData) {
+      console.log("✅ Data saved successfully to localStorage")
+      console.log("📊 Saved data preview:", JSON.parse(savedData))
+      return true
+    } else {
+      console.error("❌ Failed to save data to localStorage")
+      return false
+    }
+  } catch (error) {
+    console.error("❌ Error saving data:", error)
+    showNotification("Error saving data", "error")
+    return false
+  }
 }
 
-// Load players data from localStorage
+// Load players data from localStorage - تحميل البيانات من localStorage
 function loadPlayersData() {
   const savedData = localStorage.getItem("eaglesPlayersData")
   if (savedData) {
-    const parsedData = JSON.parse(savedData)
-    // Merge with existing data
-    Object.keys(parsedData).forEach((playerId) => {
-      if (playersDatabase[playerId]) {
-        playersDatabase[playerId] = { ...playersDatabase[playerId], ...parsedData[playerId] }
-      }
-    })
+    try {
+      const parsedData = JSON.parse(savedData)
+      console.log("📥 Loading saved data:", parsedData)
+
+      // دمج مع البيانات الموجودة
+      Object.keys(parsedData).forEach((playerId) => {
+        if (playersDatabase[playerId]) {
+          playersDatabase[playerId] = { ...playersDatabase[playerId], ...parsedData[playerId] }
+          console.log(`✅ Loaded data for player ${playerId}:`, playersDatabase[playerId])
+        }
+      })
+
+      console.log("✅ All data loaded successfully")
+      return true
+    } catch (error) {
+      console.error("❌ Error loading data:", error)
+      return false
+    }
+  } else {
+    console.log("📝 No saved data found, using default data")
+    return false
   }
 }
 
@@ -699,7 +737,7 @@ function closeModal(modalId) {
 // Logout
 function logout() {
   localStorage.removeItem("eaglesAcademyUser")
-  window.location.href = "pages/login.html"
+  window.location.href = "../html/login.html"
 }
 
 // Utility functions
@@ -752,7 +790,7 @@ function getNotificationIcon(type) {
 
 // Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  loadPlayersData() // Load saved data first
+  loadPlayersData() // تحميل البيانات المحفوظة أولاً
   initAdminDashboard()
 })
 

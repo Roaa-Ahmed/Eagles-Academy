@@ -1,563 +1,95 @@
-// Player data structure - نضيف بيانات أكتر للاعبين
+// Training schedule
+const trainingDays = [1, 3, 6] // Monday=1, Wednesday=3, Saturday=6
+
+// Current state
+let currentPlayer = null
+const currentDate = new Date()
+const currentMonth = new Date(2025, 7) // August = 7 (0-indexed)
+
+// Players database - نفس البيانات اللي في admin dashboard
 const playersDatabase = {
-  1: {
-    id: 1,
-    name: "Yassin Ahmed",
-    position: "Forward",
-    paymentStatus: "paid", // paid, pending, overdue
-    paymentDate: "2025-08-15",
-    attendance: {
-      "2025-08": {
-        // Training days: Sunday=0, Tuesday=2, Thursday=4
-        // أغسطس 2025 - أيام التدريب فقط
-        "2025-08-03": "pending", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "attended", // Thursday
-        "2025-08-10": "attended", // Sunday
-        "2025-08-12": "missed", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "attended", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "missed", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "attended", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-    activities: [
-      { date: "2025-08-28", type: "checkin", time: "16:30", description: "Checked in for training" },
-      { date: "2025-08-26", type: "attendance", description: "Attended Sunday training session" },
-      { date: "2025-08-23", type: "attendance", description: "Attended Thursday training session" },
-      { date: "2025-08-21", type: "attendance", description: "Attended Tuesday training session" },
-      { date: "2025-08-15", type: "payment", description: "Monthly payment received" },
-    ],
-  },
+  1: { id: 1, name: "Yassin Ahmed", position: "Forward", paymentStatus: "pending", attendance: { "2025-01": {} } },
   2: {
     id: 2,
     name: "Mohamed Abdelmoaty",
     position: "Midfielder",
     paymentStatus: "pending",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "missed", // Sunday
-        "2025-08-05": "attended", // Tuesday
-        "2025-08-07": "attended", // Thursday
-        "2025-08-10": "attended", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "missed", // Thursday
-        "2025-08-17": "attended", // Sunday
-        "2025-08-19": "missed", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "attended", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-    activities: [
-      { date: "2025-08-28", type: "attendance", description: "Attended Tuesday training session" },
-      { date: "2025-08-26", type: "absence", description: "Missed Sunday training session" },
-      { date: "2025-08-23", type: "attendance", description: "Attended Thursday training session" },
-    ],
+    attendance: { "2025-01": {} },
   },
-  // نضيف لاعبين أكتر للتجربة
   3: {
     id: 3,
-    name: "Ahmed Hassan",
+    name: "Abdelrahman Elbeshnawy",
     position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
+    paymentStatus: "pending",
+    attendance: { "2025-01": {} },
   },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
+  4: {
+    id: 4,
+    name: "Abdelrahman Essam",
     position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
+    paymentStatus: "pending",
+    attendance: { "2025-01": {} },
   },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
+  5: { id: 5, name: "Adam Ahmed", position: "Midfielder", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  6: { id: 6, name: "Adam", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  7: { id: 7, name: "Ahmed", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  8: { id: 8, name: "Fathy Samara", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  9: { id: 9, name: "Hamza", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  10: { id: 10, name: "Haron", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  11: { id: 11, name: "Mahmoud Khela", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  12: { id: 12, name: "Mohamed Khela", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  13: { id: 13, name: "Osama", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  14: { id: 14, name: "Mohamed Wael", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  15: { id: 15, name: "Yehia", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  16: { id: 16, name: "Yassin", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  17: { id: 17, name: "Ahmed Mohamed", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  18: { id: 18, name: "Malek Mohamed", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  19: { id: 19, name: "Ali", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  20: { id: 20, name: "Omar", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  21: { id: 21, name: "Seif", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  22: { id: 22, name: "Youssef", position: "Defender", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  23: {
+    id: 23,
+    name: "Youssef Salem",
+    position: "Goalkeeper",
+    paymentStatus: "pending",
+    attendance: { "2025-01": {} },
   },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
-   3: {
-    id: 3,
-    name: "Ahmed Hassan",
-    position: "Defender",
-    paymentStatus: "overdue",
-    paymentDate: null,
-    attendance: {
-      "2025-08": {
-        "2025-08-03": "attended", // Sunday
-        "2025-08-05": "missed", // Tuesday
-        "2025-08-07": "missed", // Thursday
-        "2025-08-10": "missed", // Sunday
-        "2025-08-12": "attended", // Tuesday
-        "2025-08-14": "attended", // Thursday
-        "2025-08-17": "missed", // Sunday
-        "2025-08-19": "attended", // Tuesday
-        "2025-08-21": "attended", // Thursday
-        "2025-08-24": "attended", // Sunday
-        "2025-08-26": "missed", // Tuesday
-        "2025-08-28": "pending", // Thursday
-        "2025-08-31": "pending", // Sunday
-      },
-    },
-  },
+  24: { id: 24, name: "Ahmed Hany", position: "Goalkeeper", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  25: { id: 25, name: "Seif Saad", position: "Goalkeeper", paymentStatus: "pending", attendance: { "2025-01": {} } },
+  26: { id: 26, name: "Seif Elbaz", position: "Goalkeeper", paymentStatus: "pending", attendance: { "2025-01": {} } },
 }
 
-// Training schedule - أيام التدريب في الأسبوع
-const trainingDays = [0, 2, 4] // Sunday=0, Tuesday=2, Thursday=4
-
-// Current state
-let currentPlayer = null
-const currentDate = new Date()
-// نبدأ من أغسطس 2025
-const currentMonth = new Date(2025, 7) // August = 7 (0-indexed)
-
-// ✅ NEW: Load updated data from admin dashboard
+// تحميل البيانات المحدثة من admin dashboard
 function loadUpdatedPlayerData() {
   const savedData = localStorage.getItem("eaglesPlayersData")
   if (savedData) {
     try {
       const parsedData = JSON.parse(savedData)
-      console.log("📥 Loading data from admin dashboard:", parsedData)
-      
-      // Update current player data with admin changes
+      console.log("📥 Loading updated data from admin dashboard:", parsedData)
+
+      // تحديث بيانات اللاعبين بالتغييرات من الأدمن
       Object.keys(parsedData).forEach((playerId) => {
         const playerIdNum = Number.parseInt(playerId)
         if (playersDatabase[playerIdNum]) {
-          // Merge admin data with existing player data
-          playersDatabase[playerIdNum] = { 
-            ...playersDatabase[playerIdNum], 
-            ...parsedData[playerId] 
+          // دمج البيانات الجديدة مع الموجودة
+          playersDatabase[playerIdNum] = {
+            ...playersDatabase[playerIdNum],
+            ...parsedData[playerId],
           }
-          console.log(`✅ Updated player ${playerIdNum} data from admin`)
+          console.log(`✅ Updated player ${playerIdNum} data:`, playersDatabase[playerIdNum])
         }
       })
-      
+
       return true
     } catch (error) {
       console.error("❌ Error loading admin data:", error)
       return false
     }
+  } else {
+    console.log("📝 No admin data found in localStorage")
+    return false
   }
-  return false
 }
 
 // Get player ID from URL
@@ -570,11 +102,11 @@ function getPlayerIdFromURL() {
 
 // Initialize dashboard
 function initDashboard() {
-  console.log("🚀 Initializing dashboard...")
+  console.log("🚀 Initializing player dashboard...")
   showLoadingScreen()
 
   setTimeout(() => {
-    // ✅ NEW: Load any updates from admin dashboard first
+    // تحميل أي تحديثات من admin dashboard أولاً
     const dataLoaded = loadUpdatedPlayerData()
     if (dataLoaded) {
       console.log("🔄 Admin data loaded successfully")
@@ -613,13 +145,14 @@ function initDashboard() {
 // Load player dashboard
 function loadPlayerDashboard() {
   console.log("Loading dashboard for:", currentPlayer.name)
-  
-  // ✅ NEW: Refresh data from admin dashboard before loading
+
+  // تحديث البيانات من admin dashboard قبل التحميل
   loadUpdatedPlayerData()
   if (currentPlayer && currentPlayer.id) {
     currentPlayer = playersDatabase[currentPlayer.id]
+    console.log("Updated current player data:", currentPlayer)
   }
-  
+
   updatePlayerHeader()
   updatePaymentStatus()
   updateAttendanceOverview()
@@ -658,7 +191,6 @@ function updatePaymentStatus() {
     "December",
   ]
 
-  // عرض شهر أغسطس 2025
   currentMonthElement.textContent = `${monthNames[currentMonth.getMonth()]} ${currentMonth.getFullYear()}`
 
   // Calculate due date (last day of month)
@@ -668,6 +200,8 @@ function updatePaymentStatus() {
   // Update status badge
   const statusBadge = statusElement.querySelector(".status-badge")
   statusBadge.className = `status-badge ${currentPlayer.paymentStatus}`
+
+  console.log("💰 Current payment status:", currentPlayer.paymentStatus)
 
   switch (currentPlayer.paymentStatus) {
     case "paid":
@@ -689,6 +223,8 @@ function updatePaymentStatus() {
 function updateAttendanceOverview() {
   const currentMonthKey = `${currentMonth.getFullYear()}-${String(currentMonth.getMonth() + 1).padStart(2, "0")}`
   const attendance = currentPlayer.attendance[currentMonthKey] || {}
+
+  console.log("📊 Current attendance data:", attendance)
 
   let totalSessions = 0
   let attendedSessions = 0
@@ -719,9 +255,11 @@ function updateAttendanceOverview() {
   document.getElementById("attendedSessions").textContent = attendedSessions
   document.getElementById("missedSessions").textContent = missedSessions
   document.getElementById("attendanceRate").textContent = `${attendanceRate}%`
+
+  console.log(`📈 Attendance stats: ${attendedSessions}/${totalSessions} (${attendanceRate}%)`)
 }
 
-// Generate calendar - مبسط أكتر
+// Generate calendar
 function generateCalendar() {
   const calendar = document.getElementById("attendanceCalendar")
   const monthElement = document.getElementById("calendarMonth")
@@ -786,7 +324,7 @@ function generateCalendar() {
     const date = new Date(year, month, day)
     const dateKey = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`
 
-    // Check if it's a training day (Sunday, Tuesday, Thursday only)
+    // Check if it's a training day
     if (trainingDays.includes(date.getDay())) {
       dayElement.classList.add("training-day")
 
@@ -794,12 +332,11 @@ function generateCalendar() {
       if (attendance[dateKey] === "attended") {
         dayElement.classList.add("attended")
         dayElement.innerHTML += '<i class="fas fa-check"></i>'
+        console.log(`✅ Day ${day}: attended`)
       } else if (attendance[dateKey] === "missed") {
         dayElement.classList.add("missed")
         dayElement.innerHTML += '<i class="fas fa-times"></i>'
-      } else if (attendance[dateKey] === "pending") {
-        // لسه مجاش وقته
-        dayElement.classList.add("training-day")
+        console.log(`❌ Day ${day}: missed`)
       }
     }
 
@@ -887,7 +424,6 @@ function viewProfile() {
 function logout() {
   localStorage.removeItem("eaglesAcademyUser")
 
-  // تحديد المسار الصحيح للعودة لصفحة تسجيل الدخول
   const currentPath = window.location.pathname
   let loginPath = ""
 
@@ -958,60 +494,89 @@ function startRealTimeClock() {
   }, 1000)
 }
 
-// ✅ NEW: Auto-refresh data every 30 seconds to sync with admin changes
+// تحديث تلقائي للبيانات كل 10 ثواني للمزامنة مع تغييرات الأدمن
 setInterval(() => {
   if (currentPlayer) {
     const oldPaymentStatus = currentPlayer.paymentStatus
     const oldAttendance = JSON.stringify(currentPlayer.attendance)
-    
-    // Load fresh data from admin
+
+    // تحميل البيانات الجديدة من الأدمن
     const dataUpdated = loadUpdatedPlayerData()
-    
+
     if (dataUpdated && playersDatabase[currentPlayer.id]) {
       const newPlayer = playersDatabase[currentPlayer.id]
       const newPaymentStatus = newPlayer.paymentStatus
       const newAttendance = JSON.stringify(newPlayer.attendance)
-      
-      // Check if data changed
+
+      // التحقق من تغيير البيانات
       if (oldPaymentStatus !== newPaymentStatus || oldAttendance !== newAttendance) {
         currentPlayer = newPlayer
-        
-        // Refresh the dashboard
+
+        // تحديث لوحة التحكم
         updatePaymentStatus()
         updateAttendanceOverview()
         generateCalendar()
-        
+
         console.log("🔄 Dashboard refreshed with new admin data")
         showNotification("Dashboard updated with latest data", "info")
       }
     }
   }
-}, 30000) // Check every 30 seconds
+}, 10000) // فحص كل 10 ثواني
 
-// ✅ NEW: Also refresh when page becomes visible (when user switches back to tab)
+// تحديث فوري عند العودة للصفحة
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden && currentPlayer) {
     console.log("👁️ Page became visible, checking for updates...")
-    
+
     const oldPaymentStatus = currentPlayer.paymentStatus
     const oldAttendance = JSON.stringify(currentPlayer.attendance)
-    
+
     const dataUpdated = loadUpdatedPlayerData()
-    
+
     if (dataUpdated && playersDatabase[currentPlayer.id]) {
       const newPlayer = playersDatabase[currentPlayer.id]
       const newPaymentStatus = newPlayer.paymentStatus
       const newAttendance = JSON.stringify(newPlayer.attendance)
-      
+
       if (oldPaymentStatus !== newPaymentStatus || oldAttendance !== newAttendance) {
         currentPlayer = newPlayer
-        
+
         updatePaymentStatus()
         updateAttendanceOverview()
         generateCalendar()
-        
+
         console.log("🔄 Dashboard refreshed on tab focus")
         showNotification("Dashboard updated!", "success")
+      }
+    }
+  }
+})
+
+// مراقب تغييرات localStorage للتحديث الفوري
+window.addEventListener("storage", (e) => {
+  if (e.key === "eaglesPlayersData" && currentPlayer) {
+    console.log("🔄 localStorage change detected, updating dashboard...")
+
+    const oldPaymentStatus = currentPlayer.paymentStatus
+    const oldAttendance = JSON.stringify(currentPlayer.attendance)
+
+    loadUpdatedPlayerData()
+
+    if (playersDatabase[currentPlayer.id]) {
+      const newPlayer = playersDatabase[currentPlayer.id]
+      const newPaymentStatus = newPlayer.paymentStatus
+      const newAttendance = JSON.stringify(newPlayer.attendance)
+
+      if (oldPaymentStatus !== newPaymentStatus || oldAttendance !== newAttendance) {
+        currentPlayer = newPlayer
+
+        updatePaymentStatus()
+        updateAttendanceOverview()
+        generateCalendar()
+
+        console.log("🔄 Instant update from localStorage")
+        showNotification("Dashboard updated instantly!", "success")
       }
     }
   }
