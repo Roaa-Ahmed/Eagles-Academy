@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eagles Academy - Elite Sports Training</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/google-form-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -16,32 +17,20 @@
                 <img src="images/photo_2025-07-02_00-20-51.jpg" alt="Eagles Academy Logo" class="logo">
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="./html/football.html" class="nav-link">
+                <a href="html/football.html" class="nav-link">
                     <i class="fas fa-futbol"></i>
                     <span>Football</span>
                 </a>
-                <a href="./html/crossfit.html" class="nav-link">
+                <a href="html/crossfit.html" class="nav-link">
                     <i class="fas fa-dumbbell"></i>
                     <span>CrossFit</span>
                 </a>
             </div>
             <div class="nav-auth">
-                <a href="./html/login.html" class="login-btn">
+                <a href="html/login.html" class="login-btn">
                     <i class="fas fa-user"></i>
                     <span>Login</span>
                 </a>
-                <div class="user-profile" id="userProfile" style="display: none;">
-                    <div class="user-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name" id="userName">Player Name</span>
-                        <span class="user-id" id="userIdDisplay">#ID123</span>
-                    </div>
-                    <button class="logout-btn" id="logoutBtn">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </div>
             </div>
             <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
@@ -62,7 +51,6 @@
             <p class="hero-description">
                 Unleash Your Athletic Potential
             </p>
-            <!-- Discover More Button - سينزل إلى قسم About Us -->
             <button class="cta-button" id="discover-more-btn">
                 <span>Discover More</span>
                 <i class="fas fa-arrow-down"></i>
@@ -173,29 +161,75 @@
                 </div>
                 
                 <div class="cta-form">
-                    <h3>Register Now</h3>
-                    <form class="registration-form" onsubmit="handleSubmit(event)">
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
-                            <i class="fas fa-user"></i>
+                    <div class="google-form-container">
+                        <div class="form-header">
+                            <div class="google-logo">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <h3>Register Now</h3>
+                            <p>Quick & Secure Registration via Google Forms</p>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required>
-                            <i class="fas fa-phone"></i>
+                        
+                        <div class="registration-preview">
+                            <div class="preview-item">
+                                <i class="fas fa-user"></i>
+                                <span>Full Name</span>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-phone"></i>
+                                <span>Phone Number</span>
+                            </div>
+                            <div class="preview-item">
+                                <i class="fas fa-futbol"></i>
+                                <span>Preferred Sport</span>
+                            </div>
+                          
                         </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="">Choose Sport</option>
-                                <option value="football">Football</option>
-                                <option value="basketball">تاهيل عسكرى</option>
-                            </select>
-                            <i class="fas fa-futbol"></i>
+                        
+                        <div class="form-actions">
+                            <button class="google-form-btn" onclick="openGoogleForm()">
+                                <div class="btn-content">
+                                    <i class="fab fa-google"></i>
+                                    <span>Open Registration Form</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </div>
+                            </button>
+                            
+                            <div class="form-benefits">
+                                <div class="benefit">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Secure & Private</span>
+                                </div>
+                                <div class="benefit">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Takes 2 Minutes</span>
+                                </div>
+                                <div class="benefit">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Instant Confirmation</span>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="submit-btn">
-                            <span>Join Now</span>
-                            <i class="fas fa-arrow-left"></i>
-                        </button>
-                    </form>
+                        
+                        <!-- Alternative Contact Methods -->
+                        <div class="alternative-contact">
+                            <div class="divider">
+                                <span>Or contact us directly</span>
+                            </div>
+                            
+                            <div class="contact-options">
+                                <button class="contact-btn whatsapp-btn" onclick="openWhatsApp()">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </button>
+                                
+                                <button class="contact-btn phone-btn" onclick="makePhoneCall()">
+                                    <i class="fas fa-phone"></i>
+                                    <span>Call Us</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -231,7 +265,7 @@
         </div>
     </footer>
 
+    <script src="js/google-form-handler.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-

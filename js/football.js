@@ -61,7 +61,7 @@ const playersData = [
     name: "Fathy Samara",
     position: "Forward",
     type: "players", // field players - كان Players بحرف كبير
-    image: "../images/fathy samara.jpg",
+    image: "../images/Fathy samara.jpg",
     rating: 0,
   },
   {
@@ -157,7 +157,7 @@ const playersData = [
     name: "Omar",
     position: "Forward",
     type: "players", // field players - كان Players ��حرف كبير
-    image: "../images/Omar.jpg",
+    image: "../images/omar.jpg",
     rating: 0,
   },
   {
