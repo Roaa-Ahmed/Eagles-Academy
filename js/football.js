@@ -125,7 +125,7 @@ const playersData = [
     name: "Yassin",
     position: "Forward",
     type: "players", // field players - كان Players ��حرف كبير
-    image: "../images/Yassin.jpg",
+    image: "../images/yassin.jpg",
     rating: 0,
   },
   {
@@ -165,7 +165,7 @@ const playersData = [
     name: "Seif",
     position: "Forward",
     type: "players", // field players - كان Players ��حرف كبير
-    image: "../images/Seif.jpg",
+    image: "../images/seif.jpg",
     rating: 0,
   },
   {
